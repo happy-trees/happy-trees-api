@@ -3,7 +3,7 @@ const request = require('supertest');
 const app = require('../../lib/app');
 
 describe('auth routes', () => {
-  it('creates and returns a user', () => {
+  it('creates and returns a guest user', () => {
     return request(app)
       .post('/api/v1/auth/guest')
       .send({ nickname: 'jack', avatar: 'someimgurl' })
@@ -11,6 +11,26 @@ describe('auth routes', () => {
         expect(res.body).toEqual({
           _id: expect.any(String),
           nickname: 'jack',
+          isGuest: true,
+          avatar: 'someimgurl',
+          __v: 0
+        });
+      });
+  });
+
+  it('creates and returns a user', () => {
+    return request(app)
+      .post('/api/v1/auth/guest')
+      .send({ 
+        email: 'john@test.com',
+        password: 'password',
+        nickname: 'john', 
+        avatar: 'someimgurl'
+      })
+      .then(res => {
+        expect(res.body).toEqual({
+          _id: expect.any(String),
+          nickname: 'john', 
           isGuest: true,
           avatar: 'someimgurl',
           __v: 0
