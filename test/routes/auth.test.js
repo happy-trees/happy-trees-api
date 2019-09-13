@@ -13,7 +13,6 @@ describe('auth routes', () => {
           nickname: 'jack',
           isGuest: true,
           avatar: 'someimgurl',
-          __v: 0
         });
       });
   });
@@ -33,7 +32,6 @@ describe('auth routes', () => {
           nickname: 'john', 
           isGuest: true,
           avatar: 'someimgurl',
-          __v: 0
         });
       });
   });
@@ -47,7 +45,6 @@ describe('auth routes', () => {
           nickname: 'guestuser',
           avatar: 'someimgurl',
           isGuest: true,
-          __v: 0
         });
       });
   });
