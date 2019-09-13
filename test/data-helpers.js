@@ -17,7 +17,8 @@ let token = null;
 beforeEach(async() => {
   return await agent
     .post('/api/v1/auth/guest')
-    .send({ nickname: 'guestuser', avatar: 'someimgurl' });
+    .send({ nickname: 'guestuser', avatar: 'someimgurl' })
+    .then(res => token = res.header['set-cookie'][0]);
 });
 
 afterAll(() => {
