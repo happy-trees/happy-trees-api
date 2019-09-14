@@ -12,6 +12,7 @@ describe('auth routes', () => {
           _id: expect.any(String),
           nickname: 'jack',
           isGuest: true,
+          isWaiting: false,
           avatar: 'someimgurl',
         });
       });
@@ -31,6 +32,7 @@ describe('auth routes', () => {
           _id: expect.any(String),
           nickname: 'john', 
           isGuest: true,
+          isWaiting: false,
           avatar: 'someimgurl',
         });
       });
@@ -45,6 +47,7 @@ describe('auth routes', () => {
           nickname: 'guestuser',
           avatar: 'someimgurl',
           isGuest: true,
+          isWaiting: false,
         });
       });
   });
