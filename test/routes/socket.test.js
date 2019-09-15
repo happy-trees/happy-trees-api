@@ -59,6 +59,6 @@ describe('auth routes', () => {
     socket1.emit('find game');
     setTimeout(() => {
       socket2.emit('find game');
-    }, 1000);
+    }, 100);
   });
 });
