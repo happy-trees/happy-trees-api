@@ -1,11 +1,9 @@
 require('dotenv').config();
-const seedData = require('./seed-data');
 const connect = require('../lib/utils/connect');
 const mongoose = require('mongoose');
 const request = require('supertest');
 const app = require('../lib/app');
 
-const prepare = arr => JSON.parse(JSON.stringify(arr));
 
 beforeAll(() => {
   connect();
@@ -23,8 +21,6 @@ let userId = null;
 let userId2 = null;
 let seededUsers = null;
 beforeEach(async() => {
-  const { users } = await seedData();
-  seededUsers = prepare(users);
 
   return await agent
     .post('/api/v1/auth/guest')
