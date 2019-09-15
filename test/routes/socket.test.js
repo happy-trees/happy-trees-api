@@ -57,8 +57,8 @@ describe('auth routes', () => {
       strokeWidth: 5
     };
     socket1.emit('find game');
-    socket2.emit('find game');
-    
-    
+    setTimeout(() => {
+      socket2.emit('find game');
+    }, 1000);
   });
 });
