@@ -82,4 +82,27 @@ describe('auth routes', () => {
       socket2.emit('find game');
     }, 100);
   });
+
+  it('starts the intermission timer after a correct answer', (done) => {
+    socket2.on('correct answer', ({ isCorrect }) => {
+      expect(isCorrect).toEqual(true);
+    });
+    socket2.on('intermission', ({ countdown }) => {
+      expect(countdown).toEqual(9);
+      socket1.close();
+      socket2.close();
+      done();
+    });
+    socket1.on('start game', (startRound) => {
+      socket1.emit('answer', { 
+        answer: 'trees', 
+        roundId: startRound._id, 
+        gameId: startRound.gameId 
+      });
+    });
+    socket1.emit('find game');
+    setTimeout(() => {
+      socket2.emit('find game');
+    }, 100);
+  });
 });
