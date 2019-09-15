@@ -74,7 +74,8 @@ describe('auth routes', () => {
       socket1.emit('answer', { 
         answer: 'trees', 
         roundId: startRound._id, 
-        gameId: startRound.gameId 
+        gameId: startRound.gameId,
+        currentRoundNumber: startRound.roundNumber
       });
     });
     socket1.emit('find game');
@@ -97,7 +98,8 @@ describe('auth routes', () => {
       socket1.emit('answer', { 
         answer: 'trees', 
         roundId: startRound._id, 
-        gameId: startRound.gameId 
+        gameId: startRound.gameId,
+        currentRoundNumber: startRound.roundNumber
       });
     });
     socket1.emit('find game');
@@ -105,4 +107,28 @@ describe('auth routes', () => {
       socket2.emit('find game');
     }, 100);
   });
+
+  // it('gets the start of new round event', (done) => {
+  //   socket2.on('correct answer', ({ isCorrect }) => {
+  //     expect(isCorrect).toEqual(true);
+  //   });
+  //   socket2.on('new round', (round) => {
+  //     expect(round.roundNumber).toEqual(2);
+  //     socket1.close();
+  //     socket2.close();
+  //     done();
+  //   });
+  //   socket1.on('start game', (startRound) => {
+  //     socket1.emit('answer', { 
+  //       answer: 'trees', 
+  //       roundId: startRound._id, 
+  //       gameId: startRound.gameId,
+  //       currentRoundNumber: startRound.roundNumber
+  //     });
+  //   });
+  //   socket1.emit('find game');
+  //   setTimeout(() => {
+  //     socket2.emit('find game');
+  //   }, 100);
+  // });
 });
