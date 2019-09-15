@@ -31,7 +31,7 @@ describe('auth routes', () => {
     http.close();
   });
 
-  it('connects to to socket.io and sends a stroke', (done) => {
+  it('starts a game and sends a stroke', (done) => {
     socket2.on('stroke', (data) => {
       expect(data).toEqual({
         x: 0,
@@ -45,6 +45,9 @@ describe('auth routes', () => {
       socket2.close();
       done();
     });
+    socket1.on('start game', startRound => {
+      socket1.emit('stroke', { data, gameId: startRound.gameId });
+    });
     const data = {
       x: 0,
       y: 10,
@@ -53,6 +56,9 @@ describe('auth routes', () => {
       color: '#000000',
       strokeWidth: 5
     };
-    socket1.emit('stroke', data);
+    socket1.emit('find game');
+    socket2.emit('find game');
+    
+    
   });
 });
