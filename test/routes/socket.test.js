@@ -1,19 +1,15 @@
-const { getToken, getToken2, getUserId } = require('../data-helpers');
+const { getToken, getToken2 } = require('../data-helpers');
 const io = require('socket.io-client');
 const http = require('../../lib/app');
 
 describe('auth routes', () => {
   let socket1;
   let socket2;
-
-  let userId;
   beforeEach(async() => {
     http.listen(3001);
 
     const token = getToken();
     const token2 = getToken2();
-
-    userId = getUserId();
 
     socket1 = io.connect('http://localhost:3001', {
       extraHeaders: { Cookie: token },
@@ -78,8 +74,7 @@ describe('auth routes', () => {
       socket1.emit('answer', { 
         answer: 'trees', 
         roundId: startRound._id, 
-        gameId: startRound.gameId,
-        userId 
+        gameId: startRound.gameId 
       });
     });
     socket1.emit('find game');
