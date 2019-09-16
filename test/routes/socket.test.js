@@ -60,7 +60,7 @@ describe('auth routes', () => {
     socket1.emit('find game');
     setTimeout(() => {
       socket2.emit('find game');
-    }, 100);
+    }, 500);
   });
 
   it('starts a game and and sends a correct answer', (done) => {
@@ -81,7 +81,7 @@ describe('auth routes', () => {
     socket1.emit('find game');
     setTimeout(() => {
       socket2.emit('find game');
-    }, 100);
+    }, 500);
   });
 
   it('starts the intermission timer after a correct answer', (done) => {
@@ -105,7 +105,7 @@ describe('auth routes', () => {
     socket1.emit('find game');
     setTimeout(() => {
       socket2.emit('find game');
-    }, 100);
+    }, 500);
   });
 
   // it('gets the start of new round event', (done) => {
