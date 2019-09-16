@@ -89,6 +89,7 @@ describe('auth routes', () => {
       expect(isCorrect).toEqual(true);
     });
     socket2.on('intermission', ({ countdown }) => {
+      console.log('STARTED INTERMISSION TIMER');
       expect(countdown).toEqual(9);
       socket1.close();
       socket2.close();
